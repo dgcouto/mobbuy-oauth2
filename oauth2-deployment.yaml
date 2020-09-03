@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oauth2-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: oauth2-app
+  template:
+    metadata:
+      labels:
+        app: oauth2-app
+    spec:
+      containers:
+      - name: oauth2-app
+        image: registry.digitalocean.com/mobbuy-registry/oauth2-app:v0.1
+        ports:
+        - containerPort: 3388
+          protocol: TCP
+
